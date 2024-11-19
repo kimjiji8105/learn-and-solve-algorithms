@@ -1,0 +1,10 @@
+-- 코드를 입력하세요
+-- 2021년에 출판 / '인문' 카테고리 / PUBLISHED_DATE의 데이트 포맷이 예시와 동일
+-- 도서 ID(BOOK_ID), 출판일 (PUBLISHED_DATE)을 출력
+-- 출판일을 기준으로 오름차순 정렬
+
+SELECT BOOK_ID, TO_CHAR(PUBLISHED_DATE, 'YYYY-MM-DD') AS "PUBLISHED_DATE"
+FROM BOOK
+WHERE TO_CHAR(PUBLISHED_DATE, 'YYYY') = '2021'
+AND CATEGORY = '인문'
+ORDER BY PUBLISHED_DATE; 
