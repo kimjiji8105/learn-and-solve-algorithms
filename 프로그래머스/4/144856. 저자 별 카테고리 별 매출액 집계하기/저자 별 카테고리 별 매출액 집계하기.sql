@@ -1,0 +1,13 @@
+-- 코드를 입력하세요
+-- 2022년 1월의 도서 판매 데이터를 기준
+-- 저자 별, 카테고리 별 매출액(TOTAL_SALES = 판매량 * 판매가), 저자 ID(AUTHOR_ID), 저자명(AUTHOR_NAME), 카테고리(CATEGORY), 매출액(SALES) 리스트를 출력
+-- 저자 ID를 오름차순으로, 저자 ID가 같다면 카테고리를 내림차순 정렬
+
+SELECT T.AUTHOR_ID, A.AUTHOR_NAME, T.CATEGORY, T.TOTAL_SALES
+FROM (SELECT B.AUTHOR_ID, B.CATEGORY, SUM(SALES*PRICE) AS TOTAL_SALES
+      FROM BOOK B
+      LEFT JOIN BOOK_SALES S ON B.BOOK_ID = S.BOOK_ID
+      WHERE YEAR(S.sales_date) = '2022' AND MONTH(S.sales_date) = '01'
+      GROUP BY B.AUTHOR_ID, B.CATEGORY) T
+LEFT JOIN AUTHOR A ON A.AUTHOR_ID = T.AUTHOR_ID
+ORDER BY T.AUTHOR_ID, T.CATEGORY DESC;
