@@ -1,0 +1,13 @@
+-- 코드를 작성해주세요
+-- 물고기 종류 별로 가장 큰 물고기의 ID, 물고기 이름, 길이를 출력
+-- 물고기의 ID 컬럼명은 ID, 이름 컬럼명은 FISH_NAME, 길이 컬럼명은 LENGTH
+-- 물고기의 ID에 대해 오름차순 정렬
+
+SELECT I.ID, N.FISH_NAME, M.LENGTH
+FROM FISH_INFO I 
+RIGHT JOIN (SELECT FISH_TYPE, MAX(LENGTH) AS LENGTH
+           FROM FISH_INFO 
+           GROUP BY FISH_TYPE) M 
+ON (I.FISH_TYPE = M.FISH_TYPE) AND (I.LENGTH = M.LENGTH)
+LEFT JOIN FISH_NAME_INFO N ON I.FISH_TYPE = N.FISH_TYPE
+ORDER BY ID;
