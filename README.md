@@ -1,2 +1,2 @@
-# programmers-sql-answers
-This repository contains my solutions to algorithm and SQL problems from the Programmers platform. It covers a wide range of topics, including algorithms, data structures, and SQL querying. Each solution is well-documented to help understand the problem-solving process and improve technical proficiency.
+# Learn and Solve Algorithms
+This repository is dedicated to preparing for coding tests by solving algorithm problems and studying related concepts. It includes solutions, explanations, and notes to help deepen understanding and improve problem-solving skills.
