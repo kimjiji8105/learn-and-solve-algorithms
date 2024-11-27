@@ -1,2 +1,2 @@
 # programmers-sql-answers
-A compilation of my solutions for SQL problems from the Programmers coding platform, including step-by-step walkthroughs.
+This repository contains my solutions to algorithm problems from the Programmers platform. It covers problems of various difficulty levels, with well-documented code and explanations. This collection showcases my problem-solving skills and proficiency in algorithms and data structures.
