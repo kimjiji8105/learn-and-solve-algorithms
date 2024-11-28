@@ -3,17 +3,15 @@
 -- 자동차 ID와 AVAILABILITY 리스트를 출력
 -- 반납 날짜가 2022년 10월 16일인 경우에도 '대여중'으로 표시
 -- 자동차 ID를 기준으로 내림차순 정렬
-WITH CAR_AVAILABILITY AS (
-    SELECT CAR_ID,
-           CASE 
-               WHEN START_DATE <= DATE('2022-10-16') AND END_DATE >= DATE('2022-10-16') THEN '대여중'
-               ELSE '대여 가능'
-           END AS AVAILABILITY
-    FROM CAR_RENTAL_COMPANY_RENTAL_HISTORY
-    WHERE START_DATE <= DATE('2022-10-16') -- 2022-10-16 이전에 대여를 시작한 기록만
-       OR END_DATE >= DATE('2022-10-16')   -- 2022-10-16 이후에 대여를 종료한 기록만
-)
+
+WITH CAR_AVA AS (
+    SELECT *,
+           CASE WHEN START_DATE <= STR_TO_DATE('2022-10-16', '%Y-%m-%d') AND END_DATE >= STR_TO_DATE('2022-10-16', '%Y-%m-%d') THEN '대여중'
+                ELSE '대여 가능' END AS AVAILABILITY
+    FROM CAR_RENTAL_COMPANY_RENTAL_HISTORY)
+    
 SELECT CAR_ID, MAX(AVAILABILITY) AS AVAILABILITY
-FROM CAR_AVAILABILITY
+FROM CAR_AVA
 GROUP BY CAR_ID
-ORDER BY CAR_ID DESC;
+ORDER BY CAR_ID desc;
+
