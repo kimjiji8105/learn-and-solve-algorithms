@@ -1,0 +1,10 @@
+-- 코드를 작성해주세요
+-- 2022년도 한해 평가 점수(SCORE: 상,하반기 점수의 합)가 가장 높은 사원 정보
+-- 점수, 사번, 성명, 직책, 이메일을 조회
+
+SELECT SUM(G.SCORE) AS SCORE, G.EMP_NO, H.EMP_NAME, H.POSITION, H.EMAIL
+FROM HR_GRADE G
+LEFT JOIN HR_EMPLOYEES H ON G.EMP_NO = H.EMP_NO
+GROUP BY G.EMP_NO
+ORDER BY SCORE DESC
+LIMIT 1
