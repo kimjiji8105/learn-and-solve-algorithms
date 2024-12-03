@@ -1,0 +1,10 @@
+-- 코드를 작성해주세요
+-- 잡은 물고기의 길이가 10cm 이하일 경우에는 LENGTH 가 NULL 
+-- 물고기의 종류 별 물고기의 이름(FISH_NAME)과 잡은 수(FISH_COUNT)를 출력
+-- 잡은 수 기준으로 내림차순 정렬
+
+SELECT COUNT(ID) AS FISH_COUNT, FISH_NAME
+FROM FISH_INFO F
+LEFT JOIN FISH_NAME_INFO N ON F.FISH_TYPE = N.FISH_TYPE
+GROUP BY FISH_NAME
+ORDER BY FISH_COUNT DESC;
