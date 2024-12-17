@@ -1,0 +1,9 @@
+-- 코드를 입력하세요
+-- 상품코드 별 매출액(판매가 * 판매량) 합계 출력
+-- 매출액 기준으로 내림차순 정렬 / 상품코드 기준으로 오름차순 정렬
+
+SELECT PRODUCT_CODE, SUM(SALES_AMOUNT)*PRICE AS SALES
+FROM OFFLINE_SALE O
+LEFT JOIN PRODUCT P ON O.PRODUCT_ID = P.PRODUCT_ID
+GROUP BY O.PRODUCT_ID
+ORDER BY SALES DESC, PRODUCT_CODE
